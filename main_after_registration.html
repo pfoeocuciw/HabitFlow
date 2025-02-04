@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main_before_registration</title>
+  <link rel="stylesheet" href="css/styles_main_after_registration.css">
+</head>
+<body>
+<div class="wrapper">
+  <header class="container">
+    <nav>
+      <ul class="left-nav">
+        <li class="profile"><a href="profile.html">Profile</a></li>
+        <li><a href="#" id="habits-button">Habitat</a></li>
+
+        <!--        <li><a href="#">Habitat</a></li>-->
+        <li><a href="#">Diagrams</a></li>
+      </ul>
+      <span class="logo">HabitFlow</span>
+      <ul class="right-nav">
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const habitsButton = document.getElementById("habits-button");
+
+    if (habitsButton) {
+      habitsButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Отменяем стандартный переход
+
+        let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+        if (habits.length > 0) {
+          window.location.href = "list_habitats.html"; // Если есть привычки
+        } else {
+          window.location.href = "habitat_without_value.html"; // Если привычек нет
+        }
+      });
+    }
+  });
+
+</script>
+</body>
+</html>
